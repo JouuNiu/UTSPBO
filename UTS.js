@@ -1,27 +1,27 @@
 class kuotaCuti{
-    constructor(nama, cutiTahunan, cutiSakit, cutiMelahirkan ){
-        this.nama = nama;
+    constructor(kuota  ){
+        this.kuota = kuota;
         this.cutiTahunan = 12;
         this.cutiSakit = 2;
-        this.cutiMelahirkan = 90;
+        this.cutilahir = 90;
     }
 }
-class cutiTahunan extends kuotaCuti{
+class cutiTahun extends kuotaCuti{
     getCuti(){
-    if(this.cutiTahunan > 12){
-        return `Cuti Tahunan anda sudah melebihi batas maksimal`;
+    if(this.kuota <= this.cutiTahunan ){
+        return `Cuti yang sudah anda ambil sebanyak ${this.kuota} hari`;
     } else {
-        return `Sisa cuti tahunan anda adalah ${this.cutiTahunan} hari`;
+        return `Kuota cuti tahunan anda sudah melebihi batas maksimal`;
     }
-}
+    }
 }
 
-class cutiSakit extends kuotaCuti{
+class cutiSakitt extends kuotaCuti{
     getCutiSakit(){
-    if(this.cutiSakit > 2){
-        return `Cuti Sakit anda sudah melebihi batas maksimal`;
+    if(this.kuota <= this.cutiSakit ){
+        return `Cuti yang sudah anda ambil sebanyak ${this.cutiSakit} hari`;
     } else {
-        return `Sisa cuti sakit anda adalah ${this.cutiSakit} hari`;
+        return `Cuti sakit anda sudah melebihi batas maksimal`;
         }
     }
 }
@@ -29,12 +29,18 @@ class cutiSakit extends kuotaCuti{
 
 class cutiMelahirkan extends kuotaCuti{
     getCutiMelahirkan(){
-    if(this.cutiMelahirkan > 90){
-        return `Cuti Melahirkan anda sudah melebihi batas maksimal`;  
+    if(this.kuota <= this.cutiMelahirkan){
+        return `Cuti yang sudah anda ambil sebanyak ${this.cutiMelahirkan} hari`;  
     } else {
-        return `Sisa cuti melahirkan anda adalah ${this.cutiMelahirkan} hari`;
+        return `Cuti melahirkan anda sudah melebihi batas maksimal`;
     }
 }
 }
 
-const karyawan1 = new kuotaCuti('Alya', 10, 1, 80);
+
+const karyawan1 = new cutiTahun (10);
+console.log(karyawan1.getCuti());
+const karyawan2 = new cutiSakitt (2);
+console.log(karyawan2.getCutiSakit());
+const karyawan3 = new cutiMelahirkan (90);
+console.log(karyawan3.getCutiMelahirkan());
